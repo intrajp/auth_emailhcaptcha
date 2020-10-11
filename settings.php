@@ -36,8 +36,8 @@ if ($ADMIN->fulltree) {
     );
 
     $settings->add(new admin_setting_configselect('auth_emailhcaptcha/hcaptcha',
-        new lang_string('auth_emailhcaptcha_key', 'auth_email'),
-        new lang_string('auth_emailhcaptcha', 'auth_email'), 0, $options));
+        new lang_string('auth_emailhcaptcha_key', 'auth_emailhcaptcha'),
+        new lang_string('auth_emailhcaptcha', 'auth_emailhcaptcha'), 0, $options));
 
     // Display locking / mapping of profile fields.
     $authplugin = get_auth_plugin('emailhcaptcha');

@@ -252,7 +252,7 @@ class auth_plugin_emailhcaptcha extends auth_plugin_base {
      * Returns whether or not the captcha element is enabled.
      * @return bool
      */
-    function is_captcha_enabled() {
+    function is_hcaptcha_enabled() {
         return get_config("auth_{$this->authtype}", 'hcaptcha');
     }
 

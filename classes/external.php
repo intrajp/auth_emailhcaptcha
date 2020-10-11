@@ -17,7 +17,7 @@
 /**
  * Auth e-mail external API
  *
- * @package    auth_email
+ * @package    auth_emailhcaptcha
  * @category   external
  * @copyright  2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -34,9 +34,9 @@ require_once($CFG->dirroot . '/user/profile/lib.php');
 /**
  * Auth e-mail external functions
  *
- * @package    auth_email
+ * @package    auth_emailhcaptcha
  * @category   external
- * @copyright  2016 Juan Leyva <juan@moodle.com>
+ * @copyright  2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since      Moodle 3.2
  */
@@ -115,8 +115,7 @@ class auth_email_external extends external_api {
             }
         }
 
-        if (signup_captcha_enabled()) {
-            // With reCAPTCHA v2 the captcha will be rendered by the mobile client using just the publickey.
+        if (signup_hcaptcha_enabled()) {
             // With hCAPTCHA the captcha will be rendered by the mobile client using just the publickey.
             $result['hcaptchapublickey'] = $CFG->hcaptchapublickey;
         }
@@ -310,9 +309,10 @@ class auth_email_external extends external_api {
         $errors = signup_validate_data($data, array());
 
         // Validate hcaptcha.
-        if (signup_captcha_enabled()) {
-            require_once($CFG->libdir . '/hcaptchalib_v2.php');
-            $response = hcaptcha_check_response(RECAPTCHA_VERIFY_URL, $CFG->hcaptchaprivatekey,
+        if (signup_hcaptcha_enabled()) {
+	    require_once($CFG->dirroot.'/auth/emailhcaptcha/hcaptchalib.php');
+
+            $response = hcaptcha_check_response(HCAPTCHA_VERIFY_URL, $CFG->hcaptchaprivatekey,
                                                  getremoteaddr(), $params['hcaptcharesponse']);
             if (!$response['isvalid']) {
                 $errors['hcaptcharesponse'] = $response['error'];
