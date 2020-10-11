@@ -100,18 +100,9 @@ line 3385
 MoodleQuickForm::registerElementType('hcaptcha', "$CFG->libdir/form/hcaptcha.php", 'MoodleQuickForm_hcaptcha');
 // end added by intrajp
 ```
+Copy these files.
 
-Next, create these 3 files.
+copy_file_to_lib_form/hcaptcha.php to lib/form
+copy_file_to_webservice/hcaptcha.php to webservice
 
-```
-# cp lib/form/recaptcha.php lib/for/hcaptcha.php
-# cp webservice/recaptcha.php webservice/hcaptcha.php
-```
-
-Edit lines as it looks hcaptcha 
-
-```
-# cp lib/recaptchalib_v2.php auth/emailhcaptcha/hcaptchalib.php
-```
-
-Edit line 57,58 as it looks hcaptcha
+Please note that this plugin may break your Moodle system in many ways.
