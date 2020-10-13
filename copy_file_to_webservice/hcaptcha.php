@@ -52,7 +52,7 @@ if (!empty($CFG->hcaptchapublickey) && !empty($CFG->hcaptchaprivatekey)) {
         var hcaptchaerrorcallback = function() {};
 
         var hcaptchaloaded = function() {
-            grecaptcha.render('hcaptcha_element', {
+            hcaptcha.render('hcaptcha_element', {
                 'sitekey' : '$pubkey',
                 'callback' : 'hcaptchacallback',
                 'expired-callback' : 'hcaptchaexpiredcallback',

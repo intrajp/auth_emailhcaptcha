@@ -105,7 +105,7 @@ function hcaptcha_get_challenge_html($apiurl, $pubkey, $lang = null) {
 
     $jscode = "
         var hcaptchacallback = function() {
-            grecaptcha.render('hcaptcha_element', {
+            hcaptcha.render('hcaptcha_element', {
               'sitekey' : '$pubkey'
             });
         }";

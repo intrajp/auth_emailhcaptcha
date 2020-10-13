@@ -24,7 +24,7 @@ add these lines
 function signup_hcaptcha_enabled() {
     global $CFG;
     $authplugin = get_auth_plugin($CFG->registerauth);
-    return !empty($CFG->hcaptchapublickey) && !empty($CFG->hcaptchaprivatekey) && $authplugin->is_captcha_enabled();
+    return !empty($CFG->hcaptchapublickey) && !empty($CFG->hcaptchaprivatekey) && $authplugin->is_hcaptcha_enabled();
 }
 ```
 
