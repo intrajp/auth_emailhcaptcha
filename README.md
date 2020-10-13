@@ -6,7 +6,7 @@ First, you should do this.
 This plugin does not override lib/authlib.php
 So, please edit lib/authlib.php as below.
 
-line 554
+about line 554
 add these lines
 
 ```
@@ -17,7 +17,7 @@ add these lines
     // end added by intrajp
 ```
 
-line 986
+about line 986
 add these lines
 
 ```
@@ -30,7 +30,7 @@ function signup_hcaptcha_enabled() {
 
 Also, please edit admin/settings/plugins.php as below.
 
-line 119
+about line 119
 add these lines
 
 ```
@@ -47,7 +47,7 @@ add these lines
 
 Also, please edit lang/en/admin.php as below.
 
-line 326
+about line 326
 add these lines
 
 ```
@@ -57,7 +57,7 @@ $string['confighcaptchapublickey'] = 'String of characters (site key) used to di
 //end added by intrajp
 ```
 
-line 1042
+about line 1042
 add these lines
 
 ```
@@ -69,7 +69,7 @@ $string['hcaptchapublickey'] = 'hCAPTCHA site key';
 
 Also, please edit login/signup_form.php as below.
 
-line 100
+about line 100
 
 ```
         // added by intrajp
@@ -81,7 +81,7 @@ line 100
         // end added by intrajp
 ```
 
-line 157
+about line 157
 
 ```
         // added by intrajp
@@ -93,16 +93,18 @@ line 157
 
 Also, please edit lib/formslib.php as below.
 
-line 3385
+about line 3385
 
 ```
 // added by intrajp
 MoodleQuickForm::registerElementType('hcaptcha', "$CFG->libdir/form/hcaptcha.php", 'MoodleQuickForm_hcaptcha');
 // end added by intrajp
 ```
-Copy these files.
+Copy these files (change owner of files after copying).
 
-copy_file_to_lib_form/hcaptcha.php to lib/form
-copy_file_to_webservice/hcaptcha.php to webservice
+```
+# cp copy_file_to_lib_form/hcaptcha.php lib/form
+# cp copy_file_to_webservice/hcaptcha.php webservice
+```
 
-Please note that this plugin may break your Moodle system in many ways.
+Please note that this plugin may break your Moodle system if you fail editting core files. 
