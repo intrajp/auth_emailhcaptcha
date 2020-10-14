@@ -86,8 +86,21 @@ about line 157
 ```
         // added by intrajp
         if (signup_hcaptcha_enabled()) {
-            // do nothing
+            $hcaptchaelement = $this->_form->getElement('hcaptcha_element');
+
+            if (!empty($this->_form->_submitValues['h-captcha-response'])) {
+                $response = $this->_form->_submitValues['h-captcha-response'];
+            }
+            if (!$hcaptchaelement) {
+                $errors['hcaptcha_element'] = get_string('missinghcaptchachallengefield');
+            } else {
+                // at this point asks lib/form/hcaptcha.php:verify:100
+                if (!$hcaptchaelement->verify($response)) {
+                    $errors['hcaptcha_element'] = get_string('incorrectpleasetryagain', 'auth');
+                }
+            }
         }
+        // we should see below function
         // end added by intrajp
 ```
 

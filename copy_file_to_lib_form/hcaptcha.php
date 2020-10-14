@@ -16,7 +16,7 @@
 
 
 /**
- * hcaptcha type form element
+ * recaptcha type form element
  *
  * Contains HTML class for a hcaptcha type element
  *
@@ -101,12 +101,14 @@ class MoodleQuickForm_hcaptcha extends HTML_QuickForm_input implements templatab
         require_once($CFG->dirroot . '/auth/emailhcaptcha/hcaptchalib.php');
 
         $response = hcaptcha_check_response(HCAPTCHA_VERIFY_URL, $CFG->hcaptchaprivatekey,
-                                           getremoteaddr(), $responsestr);
-        if (!$response['isvalid']) {
+                        $responsestr);
+        if (!$response['isvalid'] == false) {
+            return true;
+        } else {
             $attributes = $this->getAttributes();
             $attributes['error_message'] = $response['error'];
             $this->setAttributes($attributes);
-            return $response['error'];
+	    redirect('/login/signup.php');
         }
         return true;
     }

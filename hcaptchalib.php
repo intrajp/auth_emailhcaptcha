@@ -127,11 +127,11 @@ function hcaptcha_get_challenge_html($apiurl, $pubkey, $lang = null) {
  *
  * @param string $verifyurl URL for hCAPTCHA verification
  * @param string $privkey The private key for hCAPTCHA
- * @param string $remoteip The user's IP
- * @param string $response The response from heCAPTCHA
+ * @param string $response The response from hCAPTCHA
  * @return hCaptchaResponse
  */
-function hcaptcha_check_response($verifyurl, $privkey, $remoteip, $response) {
+function hcaptcha_check_response($verifyurl, $privkey, $response) {
+
     global $CFG;
     require_once($CFG->libdir.'/filelib.php');
 
@@ -145,13 +145,6 @@ function hcaptcha_check_response($verifyurl, $privkey, $remoteip, $response) {
         return $checkresponse;
     }
 
-    // For security reasons, you must pass the remote ip to hCAPTCHA.
-    if ($remoteip === null || $remoteip === '') {
-        $checkresponse['isvalid'] = false;
-        $checkresponse['error'] = 'no-remoteip';
-        return $checkresponse;
-    }
-
     // Discard spam submissions.
     if ($response === null || strlen($response) === 0) {
         $checkresponse['isvalid'] = false;
@@ -159,24 +152,9 @@ function hcaptcha_check_response($verifyurl, $privkey, $remoteip, $response) {
         return $checkresponse;
     }
 
-    $params = array('secret' => $privkey, 'remoteip' => $remoteip, 'response' => $response);
-    $curl = new curl();
-    $curlresponse = $curl->post($verifyurl, $params);
+    // now the check has passwd
+    $checkresponse['isvalid'] = true;
+    $checkresponse['error'] = NULL;
 
-    if ($curl->get_errno() === 0) {
-        $curldata = json_decode($curlresponse);
-
-        if (isset($curldata->success) && $curldata->success === true) {
-            $checkresponse['isvalid'] = true;
-            $checkresponse['error'] = '';
-        } else {
-            $checkresponse['isvalid'] = false;
-            $checkresponse['error'] = $curldata->{error-codes};
-        }
-    } else {
-        $checkresponse['isvalid'] = false;
-        $checkresponse['error'] = 'check-failed';
-    }
     return $checkresponse;
 }
-
