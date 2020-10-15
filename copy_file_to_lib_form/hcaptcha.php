@@ -16,7 +16,7 @@
 
 
 /**
- * recaptcha type form element
+ * hcaptcha type form element
  *
  * Contains HTML class for a hcaptcha type element
  *

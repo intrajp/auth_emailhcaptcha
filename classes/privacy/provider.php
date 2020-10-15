@@ -14,18 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
- * Privacy Subsystem implementation for auth_email.
+ * Privacy Subsystem implementation for auth_emailhcaptcha.
  *
  * @package    auth_emailhcaptcha
  * @copyright  2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace auth_email\privacy;
+namespace auth_emailhcaptcha\privacy;
 defined('MOODLE_INTERNAL') || die();
 /**
- * Privacy Subsystem for auth_email implementing null_provider.
+ * Privacy Subsystem for auth_emailhcaptcha implementing null_provider.
  *
- * @copyright  2018 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
+ * @copyright  2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {
