@@ -24,6 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2020101600;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2020101700;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2020060900;        // Requires this Moodle version
 $plugin->component = 'auth_emailhcaptcha';      // Full name of the plugin (used for diagnostics)

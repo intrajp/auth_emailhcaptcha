@@ -41,7 +41,6 @@ add these lines
     $setting = new admin_setting_configtext('hcaptchaprivatekey', new lang_string('hcaptchaprivatekey', 'admin'), new lang_string('confighcaptchaprivatekey', 'admin'), '', PARAM_NOTAGS);
     $setting->set_force_ltr(true);
     $temp->add($setting);
-    $ADMIN->add('authsettings', $temp);
     // end added by intrajp
 ```
 
