@@ -42,14 +42,14 @@ about line 119
 add these lines
 
 ```
-   // add for hcaptcha 
-    $setting = new admin_setting_configtext('hcaptchapublickey', new lang_string('hcaptchapublickey', 'admin'), new lang_string('confighcaptchapublickey', 'admin'), '', PARAM_NOTAGS);
-    $setting->set_force_ltr(true);
-    $temp->add($setting);
-    $setting = new admin_setting_configtext('hcaptchaprivatekey', new lang_string('hcaptchaprivatekey', 'admin'), new lang_string('confighcaptchaprivatekey', 'admin'), '', PARAM_NOTAGS);
-    $setting->set_force_ltr(true);
-    $temp->add($setting);
-    // add for hcaptcha - end 
+// add for hcaptcha 
+$setting = new admin_setting_configtext('hcaptchapublickey', new lang_string('hcaptchapublickey', 'admin'), new lang_string('confighcaptchapublickey', 'admin'), '', PARAM_NOTAGS);
+$setting->set_force_ltr(true);
+$temp->add($setting);
+$setting = new admin_setting_configtext('hcaptchaprivatekey', new lang_string('hcaptchaprivatekey', 'admin'), new lang_string('confighcaptchaprivatekey', 'admin'), '', PARAM_NOTAGS);
+$setting->set_force_ltr(true);
+$temp->add($setting);
+// add for hcaptcha - end 
 ```
 
 Also, please edit lang/en/admin.php as below.
@@ -58,10 +58,10 @@ about line 324
 add these lines
 
 ```
-//added by intrajp
+// add for hcaptcha 
 $string['confighcaptchaprivatekey'] = 'String of characters (secret key) used to communicate between your Moodle server and the hcaptcha server. hCAPTCHA keys can be obtained from <a target="_blank" href="https://www.hcaptcha.com">hCAPTCHA</a>.';
 $string['confighcaptchapublickey'] = 'String of characters (site key) used to display the hCAPTCHA element in the signup form. hCAPTCHA keys can be obtained from <a target="_blank" href="https://www.hcaptcha.com">hCAPTCHA</a>.';
-//end added by intrajp
+// add for hcaptcha - end
 ```
 
 about line 1041
@@ -79,35 +79,35 @@ Also, please edit login/signup_form.php as below.
 about line 94 
 
 ```
-        // add for hcaptcha
-        if (signup_hcaptcha_enabled()) {
-            $mform->addElement('hcaptcha', 'hcaptcha_element', get_string('security_question', 'auth'));
-            $mform->addHelpButton('hcaptcha_element', 'hcaptcha', 'auth');
-            $mform->closeHeaderBefore('hcaptcha_element');
-        }
-        // add for hcaptcha - end
+// add for hcaptcha
+if (signup_hcaptcha_enabled()) {
+    $mform->addElement('hcaptcha', 'hcaptcha_element', get_string('security_question', 'auth'));
+    $mform->addHelpButton('hcaptcha_element', 'hcaptcha', 'auth');
+    $mform->closeHeaderBefore('hcaptcha_element');
+}
+// add for hcaptcha - end
 ```
 
 about line 137
 
 ```
-        // add for hcaptcha
-        if (signup_hcaptcha_enabled()) {
-            $hcaptchaelement = $this->_form->getElement('hcaptcha_element');
+// add for hcaptcha
+if (signup_hcaptcha_enabled()) {
+    $hcaptchaelement = $this->_form->getElement('hcaptcha_element');
 
-            if (!empty($this->_form->_submitValues['h-captcha-response'])) {
-                $response = $this->_form->_submitValues['h-captcha-response'];
-            }
-            if (!$hcaptchaelement) {
-                $errors['hcaptcha_element'] = get_string('missinghcaptchachallengefield');
-            } else {
-                // at this point asks lib/form/hcaptcha.php:verify:100
-                if (!$hcaptchaelement->verify($response)) {
-                    $errors['hcaptcha_element'] = get_string('incorrectpleasetryagain', 'auth');
-                }
-            }
+    if (!empty($this->_form->_submitValues['h-captcha-response'])) {
+        $response = $this->_form->_submitValues['h-captcha-response'];
+    }
+    if (!$hcaptchaelement) {
+        $errors['hcaptcha_element'] = get_string('missinghcaptchachallengefield');
+    } else {
+        // at this point asks lib/form/hcaptcha.php:verify:100
+        if (!$hcaptchaelement->verify($response)) {
+            $errors['hcaptcha_element'] = get_string('incorrectpleasetryagain', 'auth');
         }
-        // add for hcaptcha - end
+    }
+}
+// add for hcaptcha - end
 ```
 
 Also, please edit lib/formslib.php as below.
@@ -115,10 +115,11 @@ Also, please edit lib/formslib.php as below.
 about line 3385
 
 ```
-// add for hcaptcha - end
+// add for hcaptcha
 MoodleQuickForm::registerElementType('hcaptcha', "$CFG->libdir/form/hcaptcha.php", 'MoodleQuickForm_hcaptcha');
 // add for hcaptcha - end
 ```
+
 Copy these files (change owner of files after copying).
 
 ```
