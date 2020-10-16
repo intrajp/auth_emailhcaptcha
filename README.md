@@ -10,17 +10,25 @@ about line 554
 add these lines
 
 ```
-    // added by intrajp
+    /**
+     * Returns whether or not the hcaptcha element is enabled.
+     *
+     * @abstract Implement in child classes
+     * @return bool
+     */
     function is_hcaptcha_enabled() {
         return false;
     }
-    // end added by intrajp
 ```
 
 about line 986
 add these lines
 
 ```
+/**
+ * Returns whether or not the hcaptcha element is enabled, and the admin settings fulfil its requirements.
+ * @return bool
+ */
 function signup_hcaptcha_enabled() {
     global $CFG;
     $authplugin = get_auth_plugin($CFG->registerauth);
@@ -34,19 +42,19 @@ about line 119
 add these lines
 
 ```
-   // added by intrajp
+   // add for hcaptcha 
     $setting = new admin_setting_configtext('hcaptchapublickey', new lang_string('hcaptchapublickey', 'admin'), new lang_string('confighcaptchapublickey', 'admin'), '', PARAM_NOTAGS);
     $setting->set_force_ltr(true);
     $temp->add($setting);
     $setting = new admin_setting_configtext('hcaptchaprivatekey', new lang_string('hcaptchaprivatekey', 'admin'), new lang_string('confighcaptchaprivatekey', 'admin'), '', PARAM_NOTAGS);
     $setting->set_force_ltr(true);
     $temp->add($setting);
-    // end added by intrajp
+    // add for hcaptcha - end 
 ```
 
 Also, please edit lang/en/admin.php as below.
 
-about line 326
+about line 324
 add these lines
 
 ```
@@ -56,34 +64,34 @@ $string['confighcaptchapublickey'] = 'String of characters (site key) used to di
 //end added by intrajp
 ```
 
-about line 1042
+about line 1041
 add these lines
 
 ```
-//added by intrajp
+// add for hcaptcha 
 $string['hcaptchaprivatekey'] = 'hCAPTCHA secret key';
 $string['hcaptchapublickey'] = 'hCAPTCHA site key';
-//end added by intrajp
+// add for hcaptcha - end
 ```
 
 Also, please edit login/signup_form.php as below.
 
-about line 100
+about line 94 
 
 ```
-        // added by intrajp
+        // add for hcaptcha
         if (signup_hcaptcha_enabled()) {
             $mform->addElement('hcaptcha', 'hcaptcha_element', get_string('security_question', 'auth'));
             $mform->addHelpButton('hcaptcha_element', 'hcaptcha', 'auth');
             $mform->closeHeaderBefore('hcaptcha_element');
         }
-        // end added by intrajp
+        // add for hcaptcha - end
 ```
 
-about line 157
+about line 137
 
 ```
-        // added by intrajp
+        // add for hcaptcha
         if (signup_hcaptcha_enabled()) {
             $hcaptchaelement = $this->_form->getElement('hcaptcha_element');
 
@@ -99,8 +107,7 @@ about line 157
                 }
             }
         }
-        // we should see below function
-        // end added by intrajp
+        // add for hcaptcha - end
 ```
 
 Also, please edit lib/formslib.php as below.
@@ -108,9 +115,9 @@ Also, please edit lib/formslib.php as below.
 about line 3385
 
 ```
-// added by intrajp
+// add for hcaptcha - end
 MoodleQuickForm::registerElementType('hcaptcha', "$CFG->libdir/form/hcaptcha.php", 'MoodleQuickForm_hcaptcha');
-// end added by intrajp
+// add for hcaptcha - end
 ```
 Copy these files (change owner of files after copying).
 
@@ -120,3 +127,5 @@ Copy these files (change owner of files after copying).
 ```
 
 Please note that this plugin may break your Moodle system if you fail editting core files. 
+
+Also note that your editting of core files will not survive update, so please edit again when updating your Moodle system.
