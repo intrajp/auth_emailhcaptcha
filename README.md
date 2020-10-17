@@ -130,3 +130,5 @@ Copy these files (change owner of files after copying).
 Please note that this plugin may break your Moodle system if you fail editting core files. 
 
 Also note that your editting of core files will not survive update, so please edit again when updating your Moodle system.
+
+![auth_hcaptcha1](https://user-images.githubusercontent.com/6534731/96352678-01a20680-1100-11eb-9391-929622c8d3ec.png)
