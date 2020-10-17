@@ -27,6 +27,7 @@
  *
  * @package    core_webservice
  * @copyright  2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com> 
+ * @copyright  Based on work by 2018 Dani Palou 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

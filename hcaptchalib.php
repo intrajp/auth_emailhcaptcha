@@ -31,6 +31,7 @@
 /**
  * @package auth_emailhcaptcha 
  * @copyright 2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com> 
+ * @copyright based on work by 2018 Jeff Webster
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

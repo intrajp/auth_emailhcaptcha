@@ -17,7 +17,8 @@
 /**
  * Authentication Plugin: Emailhcaptcha Authentication
  *
- * @author Shintaro Fujiwara <shintaro.fujiwara@gmail.com> 
+ * @copyright Shintaro Fujiwara <shintaro.fujiwara@gmail.com> 
+ * @copyright based on work by Martin Dougiamas 
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  * @package auth_emailhcaptcha
  */

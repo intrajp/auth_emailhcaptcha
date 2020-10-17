@@ -20,6 +20,7 @@
  * @package    auth_emailhcaptcha
  * @category   external
  * @copyright  2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
+ * @copyright  based on work by 2016 Juan Leyva <juan@moodle.com> 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since      Moodle 3.9
  */

@@ -18,6 +18,7 @@
  *
  * @package    auth_emailhcaptcha
  * @copyright  2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
+ * @copyright  Based on work by 2018 Frédéric Massart 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 namespace auth_emailhcaptcha\privacy;
@@ -26,6 +27,7 @@ defined('MOODLE_INTERNAL') || die();
  * Privacy Subsystem for auth_emailhcaptcha implementing null_provider.
  *
  * @copyright  2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
+ * @copyright  Based on work by 2018 Frédéric Massart 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {

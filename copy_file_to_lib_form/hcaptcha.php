@@ -22,6 +22,7 @@
  *
  * @package   core_form
  * @copyright 2020 Shintaro Fujiwara <shintaro.fujiwara@gmail.com>
+ * @copyright based on work by 2008 Nicolas Connault <nicolasconnault@gmail.com> 
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
